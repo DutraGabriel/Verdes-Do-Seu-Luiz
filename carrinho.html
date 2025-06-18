@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carrinho - Verdes do Seu Luiz</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .carrinho-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem 20px;
+      }
+
+      .carrinho-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .carrinho-header h1 {
+        color: var(--primary-color);
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .carrinho-header p {
+        color: var(--text-secondary);
+        font-size: 1.1rem;
+      }
+
+      .carrinho-content {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 2rem;
+      }
+
+      .itens-carrinho {
+        background: white;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow-light);
+        padding: 2rem;
+      }
+
+      .item-carrinho {
+        display: grid;
+        grid-template-columns: auto 1fr auto auto;
+        gap: 1.5rem;
+        align-items: center;
+        padding: 1.5rem 0;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .item-carrinho:last-child {
+        border-bottom: none;
+      }
+
+      .item-imagem {
+        width: 80px;
+        height: 80px;
+        background: var(--background-light);
+        border-radius: var(--border-radius-small);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        color: var(--primary-color);
+      }
+
+      .item-info h3 {
+        color: var(--text-primary);
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+      }
+
+      .item-info p {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+      }
+
+      .item-preco {
+        font-weight: 600;
+        color: var(--primary-color);
+        font-size: 1.1rem;
+      }
+
+      .item-quantidade {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .qtd-btn {
+        width: 32px;
+        height: 32px;
+        border: 1px solid var(--border-color);
+        background: white;
+        border-radius: 4px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+      }
+
+      .qtd-btn:hover {
+        background: var(--primary-color);
+        color: white;
+        border-color: var(--primary-color);
+      }
+
+      .qtd-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      .quantidade {
+        font-weight: 600;
+        min-width: 30px;
+        text-align: center;
+      }
+
+      .remover-item {
+        background: none;
+        border: none;
+        color: #e74c3c;
+        cursor: pointer;
+        font-size: 1.2rem;
+        padding: 0.5rem;
+        border-radius: 50%;
+        transition: var(--transition);
+      }
+
+      .remover-item:hover {
+        background: rgba(231, 76, 60, 0.1);
+      }
+
+      .resumo-carrinho {
+        background: white;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow-light);
+        padding: 2rem;
+        height: fit-content;
+        position: sticky;
+        top: 100px;
+      }
+
+      .resumo-carrinho h3 {
+        color: var(--primary-color);
+        margin-bottom: 1.5rem;
+        font-size: 1.3rem;
+      }
+
+      .resumo-item {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .resumo-item:last-child {
+        border-bottom: none;
+        font-weight: 600;
+        font-size: 1.1rem;
+        color: var(--primary-color);
+      }
+
+      .btn-finalizar {
+        width: 100%;
+        padding: 1rem;
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: var(--border-radius-small);
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        margin-top: 1.5rem;
+      }
+
+      .btn-finalizar:hover {
+        background: var(--primary-dark);
+      }
+
+      .carrinho-vazio {
+        text-align: center;
+        padding: 4rem 2rem;
+        color: var(--text-secondary);
+      }
+
+      .carrinho-vazio i {
+        font-size: 4rem;
+        color: var(--border-color);
+        margin-bottom: 1rem;
+      }
+
+      .carrinho-vazio h3 {
+        color: var(--text-primary);
+        margin-bottom: 1rem;
+      }
+
+      .btn-continuar-comprando {
+        display: inline-block;
+        padding: 1rem 2rem;
+        background: var(--primary-color);
+        color: white;
+        text-decoration: none;
+        border-radius: var(--border-radius-small);
+        font-weight: 600;
+        transition: var(--transition);
+        margin-top: 1rem;
+      }
+
+      .btn-continuar-comprando:hover {
+        background: var(--primary-dark);
+      }
+
+      .cupom-desconto {
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--border-color);
+      }
+
+      .cupom-input {
+        display: flex;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+      }
+
+      .cupom-input input {
+        flex: 1;
+        padding: 0.75rem;
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius-small);
+        font-size: 0.9rem;
+      }
+
+      .cupom-input button {
+        padding: 0.75rem 1rem;
+        background: var(--secondary-color);
+        color: white;
+        border: none;
+        border-radius: var(--border-radius-small);
+        cursor: pointer;
+        font-size: 0.9rem;
+        transition: var(--transition);
+      }
+
+      .cupom-input button:hover {
+        background: #7cb342;
+      }
+
+      @media (max-width: 768px) {
+        .carrinho-content {
+          grid-template-columns: 1fr;
+        }
+
+        .item-carrinho {
+          grid-template-columns: auto 1fr;
+          gap: 1rem;
+        }
+
+        .item-quantidade {
+          grid-column: 1 / -1;
+          justify-content: center;
+          margin-top: 1rem;
+        }
+
+        .remover-item {
+          position: absolute;
+          top: 1rem;
+          right: 1rem;
+        }
+
+        .item-carrinho {
+          position: relative;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <nav class="nav-container">
+        <div class="logo">
+          <i class="fas fa-leaf"></i>
+          <h1>Verdes do Seu Luiz</h1>
+        </div>
+        <div class="nav-links">
+          <a href="index.html">Início</a>
+          <a href="produtos.html">Produtos</a>
+          <a href="sobre.html">Quem Somos</a>
+          <a href="contato.html">Contato</a>
+        </div>
+        <div class="nav-icons">
+          <a href="carrinho.html" class="cart-icon active">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count">3</span>
+          </a>
+          <a href="login.html" class="user-icon">
+            <i class="fas fa-user"></i>
+          </a>
+        </div>
+        <div class="mobile-menu-toggle">
+          <i class="fas fa-bars"></i>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="carrinho-container">
+        <div class="carrinho-header">
+          <h1>Seu Carrinho</h1>
+          <p>Revise seus produtos antes de finalizar a compra</p>
+        </div>
+
+        <div class="carrinho-content">
+          <div class="itens-carrinho">
+            <div class="item-carrinho">
+              <div class="item-imagem">
+                <i class="fas fa-carrot"></i>
+              </div>
+              <div class="item-info">
+                <h3>Cenoura Orgânica</h3>
+                <p>Fresca e doce, cultivada sem agrotóxicos</p>
+              </div>
+              <div class="item-preco">R$ 4,50</div>
+              <div class="item-quantidade">
+                <button class="qtd-btn" onclick="diminuirQuantidade(this)">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <span class="quantidade">2</span>
+                <button class="qtd-btn" onclick="aumentarQuantidade(this)">
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
+              <button class="remover-item" onclick="removerItem(this)">
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+
+            <div class="item-carrinho">
+              <div class="item-imagem">
+                <i class="fas fa-leaf"></i>
+              </div>
+              <div class="item-info">
+                <h3>Alface Crespa</h3>
+                <p>Fresca e crocante, colhida no dia</p>
+              </div>
+              <div class="item-preco">R$ 3,20</div>
+              <div class="item-quantidade">
+                <button class="qtd-btn" onclick="diminuirQuantidade(this)">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <span class="quantidade">1</span>
+                <button class="qtd-btn" onclick="aumentarQuantidade(this)">
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
+              <button class="remover-item" onclick="removerItem(this)">
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+
+            <div class="item-carrinho">
+              <div class="item-imagem">
+                <i class="fas fa-apple-alt"></i>
+              </div>
+              <div class="item-info">
+                <h3>Banana Orgânica</h3>
+                <p>Doces e nutritivas</p>
+              </div>
+              <div class="item-preco">R$ 5,90</div>
+              <div class="item-quantidade">
+                <button class="qtd-btn" onclick="diminuirQuantidade(this)">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <span class="quantidade">3</span>
+                <button class="qtd-btn" onclick="aumentarQuantidade(this)">
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
+              <button class="remover-item" onclick="removerItem(this)">
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="resumo-carrinho">
+            <h3>Resumo do Pedido</h3>
+
+            <div class="resumo-item">
+              <span>Subtotal (6 itens)</span>
+              <span>R$ 25,90</span>
+            </div>
+
+            <div class="resumo-item">
+              <span>Frete</span>
+              <span>R$ 5,00</span>
+            </div>
+
+            <div class="resumo-item">
+              <span>Desconto</span>
+              <span>-R$ 2,00</span>
+            </div>
+
+            <div class="resumo-item">
+              <span>Total</span>
+              <span>R$ 28,90</span>
+            </div>
+
+            <div class="cupom-desconto">
+              <label for="cupom">Cupom de desconto:</label>
+              <div class="cupom-input">
+                <input type="text" id="cupom" placeholder="Digite seu cupom" />
+                <button onclick="aplicarCupom()">Aplicar</button>
+              </div>
+            </div>
+
+            <button class="btn-finalizar" onclick="finalizarCompra()">
+              <i class="fas fa-credit-card"></i>
+              Finalizar Compra
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <div class="footer-logo">
+              <i class="fas fa-leaf"></i>
+              <h3>Verdes do Seu Luiz</h3>
+            </div>
+            <p>
+              Produtos orgânicos frescos e naturais, cultivados com amor e
+              respeito ao meio ambiente.
+            </p>
+          </div>
+          <div class="footer-section">
+            <h4>Links Rápidos</h4>
+            <ul>
+              <li><a href="index.html">Início</a></li>
+              <li><a href="produtos.html">Produtos</a></li>
+              <li><a href="sobre.html">Quem Somos</a></li>
+              <li><a href="contato.html">Contato</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Contato</h4>
+            <p><i class="fas fa-envelope"></i> contato@verdesdoseuluiz.com</p>
+            <p><i class="fas fa-phone"></i> (48) 99999-9999</p>
+            <p><i class="fas fa-map-marker-alt"></i> São José, SC</p>
+          </div>
+          <div class="footer-section">
+            <h4>Redes Sociais</h4>
+            <div class="social-links">
+              <a href="#" class="social-link"
+                ><i class="fab fa-facebook"></i
+              ></a>
+              <a href="#" class="social-link"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" class="social-link"
+                ><i class="fab fa-whatsapp"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2024 Verdes do Seu Luiz. Todos os direitos reservados.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

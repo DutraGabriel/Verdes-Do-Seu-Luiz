@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contato - Verdes do Seu Luiz</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .contato-hero {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--primary-light) 100%
+        );
+        color: white;
+        padding: 4rem 0;
+        text-align: center;
+      }
+
+      .contato-hero h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+
+      .contato-hero p {
+        font-size: 1.2rem;
+        opacity: 0.9;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .contato-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 4rem 20px;
+      }
+
+      .contato-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        margin-bottom: 4rem;
+      }
+
+      .formulario-contato {
+        background: white;
+        padding: 2.5rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow-light);
+      }
+
+      .formulario-contato h2 {
+        color: var(--primary-color);
+        margin-bottom: 2rem;
+        font-size: 1.8rem;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: var(--text-primary);
+        font-weight: 500;
+      }
+
+      .form-group input,
+      .form-group textarea,
+      .form-group select {
+        width: 100%;
+        padding: 1rem;
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius-small);
+        font-size: 1rem;
+        transition: var(--transition);
+        font-family: inherit;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus,
+      .form-group select:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(45, 90, 39, 0.1);
+      }
+
+      .form-group textarea {
+        resize: vertical;
+        min-height: 120px;
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+
+      .btn-enviar {
+        width: 100%;
+        padding: 1rem;
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: var(--border-radius-small);
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .btn-enviar:hover {
+        background: var(--primary-dark);
+      }
+
+      .info-contato {
+        background: white;
+        padding: 2.5rem;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow-light);
+      }
+
+      .info-contato h2 {
+        color: var(--primary-color);
+        margin-bottom: 2rem;
+        font-size: 1.8rem;
+      }
+
+      .contato-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .contato-item:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+      }
+
+      .contato-icon {
+        width: 50px;
+        height: 50px;
+        background: var(--primary-color);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        flex-shrink: 0;
+      }
+
+      .contato-info h3 {
+        color: var(--text-primary);
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+      }
+
+      .contato-info p {
+        color: var(--text-secondary);
+        line-height: 1.6;
+      }
+
+      .contato-info a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: var(--transition);
+      }
+
+      .contato-info a:hover {
+        text-decoration: underline;
+      }
+
+      .horario-funcionamento {
+        background: var(--background-light);
+        padding: 1.5rem;
+        border-radius: var(--border-radius-small);
+        margin-top: 2rem;
+      }
+
+      .horario-funcionamento h3 {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+      }
+
+      .horario-item {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.5rem;
+      }
+
+      .horario-item:last-child {
+        margin-bottom: 0;
+      }
+
+      .mapa-section {
+        background: white;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow-light);
+        overflow: hidden;
+      }
+
+      .mapa-section h2 {
+        color: var(--primary-color);
+        padding: 2rem 2rem 1rem;
+        margin: 0;
+        font-size: 1.8rem;
+      }
+
+      .mapa-container {
+        height: 400px;
+        background: var(--background-light);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-secondary);
+        font-size: 1.1rem;
+      }
+
+      .mapa-placeholder {
+        text-align: center;
+        padding: 2rem;
+      }
+
+      .mapa-placeholder i {
+        font-size: 3rem;
+        color: var(--border-color);
+        margin-bottom: 1rem;
+        display: block;
+      }
+
+      @media (max-width: 768px) {
+        .contato-grid {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+
+        .contato-hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .contato-content {
+          padding: 2rem 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <nav class="nav-container">
+        <div class="logo">
+          <i class="fas fa-leaf"></i>
+          <h1>Verdes do Seu Luiz</h1>
+        </div>
+        <div class="nav-links">
+          <a href="index.html">Início</a>
+          <a href="produtos.html">Produtos</a>
+          <a href="sobre.html">Quem Somos</a>
+          <a href="contato.html" class="active">Contato</a>
+        </div>
+        <div class="nav-icons">
+          <a href="carrinho.html" class="cart-icon">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count">0</span>
+          </a>
+          <a href="login.html" class="user-icon">
+            <i class="fas fa-user"></i>
+          </a>
+        </div>
+        <div class="mobile-menu-toggle">
+          <i class="fas fa-bars"></i>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Hero Section -->
+      <section class="contato-hero">
+        <div class="container">
+          <h1>Entre em <span class="highlight">Contato</span></h1>
+          <p>
+            Estamos aqui para ajudar! Entre em contato conosco para dúvidas,
+            sugestões ou para fazer seu pedido.
+          </p>
+        </div>
+      </section>
+
+      <!-- Conteúdo Principal -->
+      <section class="contato-content">
+        <div class="contato-grid">
+          <!-- Formulário de Contato -->
+          <div class="formulario-contato">
+            <h2>Envie sua Mensagem</h2>
+            <form id="form-contato">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="nome">Nome Completo *</label>
+                  <input type="text" id="nome" name="nome" required />
+                </div>
+                <div class="form-group">
+                  <label for="email">E-mail *</label>
+                  <input type="email" id="email" name="email" required />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="telefone">Telefone</label>
+                  <input type="tel" id="telefone" name="telefone" />
+                </div>
+                <div class="form-group">
+                  <label for="assunto">Assunto *</label>
+                  <select id="assunto" name="assunto" required>
+                    <option value="">Selecione um assunto</option>
+                    <option value="duvida">Dúvida sobre Produtos</option>
+                    <option value="pedido">Fazer Pedido</option>
+                    <option value="sugestao">Sugestão</option>
+                    <option value="reclamacao">Reclamação</option>
+                    <option value="parceria">Proposta de Parceria</option>
+                    <option value="outro">Outro</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="mensagem">Mensagem *</label>
+                <textarea
+                  id="mensagem"
+                  name="mensagem"
+                  placeholder="Digite sua mensagem aqui..."
+                  required
+                ></textarea>
+              </div>
+
+              <button type="submit" class="btn-enviar">
+                <i class="fas fa-paper-plane"></i>
+                Enviar Mensagem
+              </button>
+            </form>
+          </div>
+
+          <!-- Informações de Contato -->
+          <div class="info-contato">
+            <h2>Informações de Contato</h2>
+
+            <div class="contato-item">
+              <div class="contato-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contato-info">
+                <h3>Endereço</h3>
+                <p>
+                  Rua das Hortênsias, 123<br />
+                  Bairro Jardim das Flores<br />
+                  São José, SC - CEP: 88100-000
+                </p>
+              </div>
+            </div>
+
+            <div class="contato-item">
+              <div class="contato-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div class="contato-info">
+                <h3>Telefone</h3>
+                <p>
+                  <a href="tel:+5548999999999">(48) 99999-9999</a><br />
+                  <a href="tel:+5548999999998">(48) 99999-9998</a>
+                </p>
+              </div>
+            </div>
+
+            <div class="contato-item">
+              <div class="contato-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contato-info">
+                <h3>E-mail</h3>
+                <p>
+                  <a href="mailto:contato@verdesdoseuluiz.com"
+                    >contato@verdesdoseuluiz.com</a
+                  ><br />
+                  <a href="mailto:pedidos@verdesdoseuluiz.com"
+                    >pedidos@verdesdoseuluiz.com</a
+                  >
+                </p>
+              </div>
+            </div>
+
+            <div class="contato-item">
+              <div class="contato-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="contato-info">
+                <h3>Horário de Funcionamento</h3>
+                <div class="horario-funcionamento">
+                  <div class="horario-item">
+                    <span>Segunda a Sexta:</span>
+                    <span>8h às 18h</span>
+                  </div>
+                  <div class="horario-item">
+                    <span>Sábado:</span>
+                    <span>8h às 16h</span>
+                  </div>
+                  <div class="horario-item">
+                    <span>Domingo:</span>
+                    <span>8h às 12h</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mapa -->
+        <div class="mapa-section">
+          <h2>Nossa Localização</h2>
+          <div class="mapa-container">
+            <div class="mapa-placeholder">
+              <i class="fas fa-map"></i>
+              <p>Mapa interativo será carregado aqui</p>
+              <p style="font-size: 0.9rem; margin-top: 0.5rem">
+                Rua das Hortênsias, 123 - São José, SC
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <div class="footer-logo">
+              <i class="fas fa-leaf"></i>
+              <h3>Verdes do Seu Luiz</h3>
+            </div>
+            <p>
+              Produtos orgânicos frescos e naturais, cultivados com amor e
+              respeito ao meio ambiente.
+            </p>
+          </div>
+          <div class="footer-section">
+            <h4>Links Rápidos</h4>
+            <ul>
+              <li><a href="index.html">Início</a></li>
+              <li><a href="produtos.html">Produtos</a></li>
+              <li><a href="sobre.html">Quem Somos</a></li>
+              <li><a href="contato.html">Contato</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Contato</h4>
+            <p><i class="fas fa-envelope"></i> contato@verdesdoseuluiz.com</p>
+            <p><i class="fas fa-phone"></i> (48) 99999-9999</p>
+            <p><i class="fas fa-map-marker-alt"></i> São José, SC</p>
+          </div>
+          <div class="footer-section">
+            <h4>Redes Sociais</h4>
+            <div class="social-links">
+              <a href="#" class="social-link"
+                ><i class="fab fa-facebook"></i
+              ></a>
+              <a href="#" class="social-link"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" class="social-link"
+                ><i class="fab fa-whatsapp"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2024 Verdes do Seu Luiz. Todos os direitos reservados.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

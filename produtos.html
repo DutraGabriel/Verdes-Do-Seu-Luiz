@@ -24,7 +24,7 @@
         <div class="nav-links">
           <a href="index.html">Início</a>
           <a href="produtos.html" class="active">Produtos</a>
-          <a href="sobre.html">Sobre</a>
+          <a href="sobre.html">Quem Somos</a>
           <a href="contato.html">Contato</a>
         </div>
         <div class="nav-icons">
@@ -713,14 +713,14 @@
             <ul>
               <li><a href="index.html">Início</a></li>
               <li><a href="produtos.html">Produtos</a></li>
-              <li><a href="sobre.html">Sobre</a></li>
+              <li><a href="sobre.html">Quem Somos</a></li>
               <li><a href="contato.html">Contato</a></li>
             </ul>
           </div>
           <div class="footer-section">
             <h4>Contato</h4>
             <p><i class="fas fa-envelope"></i> contato@verdesdoseuluiz.com</p>
-            <p><i class="fas fa-phone"></i> (XX) XXXX-XXXX</p>
+            <p><i class="fas fa-phone"></i> (48) 99999-9999</p>
             <p><i class="fas fa-map-marker-alt"></i> São José, SC</p>
           </div>
           <div class="footer-section">
@@ -744,105 +744,13 @@
       </div>
     </footer>
 
+    <script src="script.js"></script>
     <script>
-      // Filtros de categoria
-      document.querySelectorAll(".filtro-btn").forEach((btn) => {
-        btn.addEventListener("click", function () {
-          // Remove active de todos os botões
-          document
-            .querySelectorAll(".filtro-btn")
-            .forEach((b) => b.classList.remove("active"));
-          // Adiciona active ao botão clicado
-          this.classList.add("active");
-
-          const categoria = this.getAttribute("data-categoria");
-          filtrarProdutos(categoria);
-        });
+      // Inicializar funcionalidades específicas da página de produtos
+      document.addEventListener("DOMContentLoaded", function () {
+        initFilters();
+        initSearch();
       });
-
-      function filtrarProdutos(categoria) {
-        const produtos = document.querySelectorAll(".produto-card");
-        let contador = 0;
-
-        produtos.forEach((produto) => {
-          if (
-            categoria === "todos" ||
-            produto.getAttribute("data-categoria") === categoria
-          ) {
-            produto.style.display = "block";
-            contador++;
-          } else {
-            produto.style.display = "none";
-          }
-        });
-
-        document.getElementById("quantidade-produtos").textContent = contador;
-      }
-
-      // Controles de quantidade
-      function diminuirQuantidade(btn) {
-        const quantidadeSpan = btn.parentNode.querySelector(".quantidade");
-        let quantidade = parseInt(quantidadeSpan.textContent);
-        if (quantidade > 1) {
-          quantidadeSpan.textContent = quantidade - 1;
-        }
-      }
-
-      function aumentarQuantidade(btn) {
-        const quantidadeSpan = btn.parentNode.querySelector(".quantidade");
-        let quantidade = parseInt(quantidadeSpan.textContent);
-        quantidadeSpan.textContent = quantidade + 1;
-      }
-
-      // Adicionar ao carrinho
-      function adicionarAoCarrinho(btn) {
-        const produtoCard = btn.closest(".produto-card");
-        const nome = produtoCard.querySelector("h3").textContent;
-        const quantidade = produtoCard.querySelector(".quantidade").textContent;
-        const preco = produtoCard.querySelector(".preco-atual").textContent;
-
-        // Simular adição ao carrinho
-        const cartCount = document.querySelector(".cart-count");
-        let count = parseInt(cartCount.textContent);
-        cartCount.textContent = count + parseInt(quantidade);
-
-        // Feedback visual
-        btn.innerHTML = '<i class="fas fa-check"></i> Adicionado';
-        btn.style.background = "var(--secondary-color)";
-
-        setTimeout(() => {
-          btn.innerHTML = '<i class="fas fa-plus"></i> Adicionar';
-          btn.style.background = "var(--accent-color)";
-        }, 2000);
-
-        // Reset quantidade
-        produtoCard.querySelector(".quantidade").textContent = "1";
-      }
-
-      // Busca
-      document
-        .getElementById("busca-produtos")
-        .addEventListener("input", function () {
-          const termo = this.value.toLowerCase();
-          const produtos = document.querySelectorAll(".produto-card");
-          let contador = 0;
-
-          produtos.forEach((produto) => {
-            const nome = produto.querySelector("h3").textContent.toLowerCase();
-            const descricao = produto
-              .querySelector(".produto-descricao")
-              .textContent.toLowerCase();
-
-            if (nome.includes(termo) || descricao.includes(termo)) {
-              produto.style.display = "block";
-              contador++;
-            } else {
-              produto.style.display = "none";
-            }
-          });
-
-          document.getElementById("quantidade-produtos").textContent = contador;
-        });
     </script>
   </body>
 </html>
