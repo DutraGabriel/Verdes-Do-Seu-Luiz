@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Produtos - Verdes do Seu Luiz</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <nav class="nav-container">
+        <div class="logo">
+          <i class="fas fa-leaf"></i>
+          <h1>Verdes do Seu Luiz</h1>
+        </div>
+        <div class="nav-links">
+          <a href="index.html">Início</a>
+          <a href="produtos.html" class="active">Produtos</a>
+          <a href="sobre.html">Sobre</a>
+          <a href="contato.html">Contato</a>
+        </div>
+        <div class="nav-icons">
+          <a href="carrinho.html" class="cart-icon">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count">0</span>
+          </a>
+          <a href="login.html" class="user-icon">
+            <i class="fas fa-user"></i>
+          </a>
+        </div>
+        <div class="mobile-menu-toggle">
+          <i class="fas fa-bars"></i>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Hero Section -->
+      <section class="hero produtos-hero">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1>Nossos <span class="highlight">Produtos</span></h1>
+            <p>
+              Descubra nossa seleção completa de produtos orgânicos frescos e
+              naturais, cultivados com amor e respeito ao meio ambiente.
+            </p>
+          </div>
+          <div class="hero-image">
+            <div class="hero-visual">
+              <i class="fas fa-carrot"></i>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Filtros e Busca -->
+      <section class="filtros-section">
+        <div class="container">
+          <div class="filtros-container">
+            <div class="busca-container">
+              <div class="busca-input">
+                <i class="fas fa-search"></i>
+                <input
+                  type="text"
+                  placeholder="Buscar produtos..."
+                  id="busca-produtos"
+                />
+              </div>
+            </div>
+
+            <div class="filtros-categorias">
+              <button class="filtro-btn active" data-categoria="todos">
+                <i class="fas fa-th"></i>
+                Todos
+              </button>
+              <button class="filtro-btn" data-categoria="legumes">
+                <i class="fas fa-carrot"></i>
+                Legumes
+              </button>
+              <button class="filtro-btn" data-categoria="verduras">
+                <i class="fas fa-leaf"></i>
+                Verduras
+              </button>
+              <button class="filtro-btn" data-categoria="frutas">
+                <i class="fas fa-apple-alt"></i>
+                Frutas
+              </button>
+              <button class="filtro-btn" data-categoria="ervas">
+                <i class="fas fa-seedling"></i>
+                Ervas
+              </button>
+            </div>
+
+            <div class="ordenacao">
+              <select id="ordenar-produtos">
+                <option value="relevancia">Mais Relevantes</option>
+                <option value="preco-menor">Menor Preço</option>
+                <option value="preco-maior">Maior Preço</option>
+                <option value="nome">Nome A-Z</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Produtos -->
+      <section class="produtos-section">
+        <div class="container">
+          <div class="produtos-header">
+            <h2>Produtos Disponíveis</h2>
+            <p class="produtos-count">
+              Mostrando <span id="quantidade-produtos">24</span> produtos
+            </p>
+          </div>
+
+          <div class="produtos-grid" id="produtos-grid">
+            <!-- Legumes -->
+            <div class="produto-card" data-categoria="legumes">
+              <div class="produto-badge">Mais Vendido</div>
+              <div class="produto-imagem">
+                <i class="fas fa-carrot"></i>
+              </div>
+              <div class="produto-info">
+                <h3>Cenoura Orgânica</h3>
+                <p class="produto-descricao">
+                  Cenouras frescas e doces, cultivadas sem agrotóxicos
+                </p>
+                <div class="produto-preco">
+                  <span class="preco-atual">R$ 4,50</span>
+                  <span class="preco-antigo">R$ 5,90</span>
+                </div>
+                <div class="produto-acoes">
+                  <div class="quantidade-controle">
+                    <button class="qtd-btn" onclick="diminuirQuantidade(this)">
+                      -
+                    </button>
+                    <span class="quantidade">1</span>
+                    <button class="qtd-btn" onclick="aumentarQuantidade(this)">
+                      +
+                    </button>
+                  </div>
+                  <button
+                    class="btn btn-add-cart"
+                    onclick="adicionarAoCarrinho(this)"
+                  >
+                    <i class="fas fa-plus"></i>
+                    Adicionar
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="produto-card" data-categoria="legumes">
+              <div class="produto-imagem">
+                <i class="fas fa-pepper-hot"></i>
+              </div>
+              <div class="produto-info">
+                <h3>Pimentão Verde</h3>
+                <p class="produto-descricao">
+                  Pimentões verdes orgânicos, perfeitos para saladas
+                </p>
+                <div class="produto-preco">
+                  <span class="preco-atual">R$ 6,80</span>
+                </div>
+                <div class="produto-acoes">
+                  <div class="quantidade-controle">
+                    <button class="qtd-btn" onclick="diminuirQuantidade(this)">
+                      -
+                    </button>
+                    <span class="quantidade">1</span>
+                    <button class="qtd-btn" onclick="aumentarQuantidade(this)">
+                      +
+                    </button>
+                  </div>
+                  <button
+                    class="btn btn-add-cart"
+                    onclick="adicionarAoCarrinho(this)"
+                  >
+                    <i class="fas fa-plus"></i>
+                    Adicionar
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="produto-card" data-categoria="legumes">
+              <div class="produto-badge">Novo</div>
+              <div class="produto-imagem">
+                <i class="fas fa-seedling"></i>
+              </div>
+              <div class="produto-info">
+                <h3>Brócolis Orgânico</h3>
+                <p class="produto-descricao">
+                  Brócolis frescos e nutritivos, colhidos no dia
+                </p>
+                <div class="produto-preco">
+                  <span class="preco-atual">R$ 8,90</span>
+                  <span class="preco-antigo">R$ 12,50</span>
+                </div>
+                <div class="produto-acoes">
+                  <div class="quantidade-controle">
+                    <button class="qtd-btn" onclick="diminuirQuantidade(this)">
+                      -
+                    </button>
+                    <span class="quantidade">1</span>
+                    <button class="qtd-btn" onclick="aumentarQuantidade(this)">
+                      +
+                    </button>
+                  </div>
+                  <button
+                    class="btn btn-add-cart"
+                    onclick="adicionarAoCarrinho(this)"
+                  >
+                    <i class="fas fa-plus"></i>
+                    Adicionar
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="produto-card" data-categoria="legumes">
+              <div class="produto-imagem">
+                <i class="fas fa-carrot"></i>
+              </div>
+              <div class="produto-info">
+                <h3>Batata Doce</h3>
+                <p class="produto-descricao">
+                  Batatas doces orgânicas, ricas em nutrientes
+                </p>
+                <div class="produto-preco">
+                  <span class="preco-atual">R$ 7,50</span>
+                </div>
+                <div class="produto-acoes">
+                  <div class="quantidade-controle">
+                    <button class="qtd-btn" onclick="diminuirQuantidade(this)">
+                      -
+                    </button>
+                    <span class="quantidade">1</span>
+                    <button class="qtd-btn" onclick="aumentarQuantidade(this)">
+                      +
+                    </button>
+                  </div>
+                  <button
+                    class="btn btn-add-cart"
+                    onclick="adicionarAoCarrinho(this)"
+                  >
+                    <i class="fas fa-plus"></i>
+                    Adicionar
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Verduras -->
+            <div class="produto-card" data-categoria="verduras">
+              <div class="produto-badge">Novo</div>
+              <div class="produto-imagem">
+                <i class="fas fa-leaf"></i>
+              </div>
+              <div class="produto-info">
+                <h3>Alface Crespa</h3>
+                <p class="produto-descricao">
+                  Alface fresca e crocante, colhida no dia
+                </p>
+                <div class="produto-preco">
+                  <span class="preco-atual">R$ 3,20</span>
+                </div>
+                <div class="produto-acoes">
+                  <div class="quantidade-controle">
+                    <button class="qtd-btn" onclick="diminuirQuantidade(this)">
+                      -
+                    </button>
+                    <span class="quantidade">1</span>
+                    <button class="qtd-btn" onclick="aumentarQuantidade(this)">
+                      +
+                    </button>
+                  </div>
+                  <button
+                    class="btn btn-add-cart"
+                    onclick="adicionarAoCarrinho(this)"
+                  >
+                    <i class="fas fa-plus"></i>
+                    Adicionar
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="produto-card" data-categoria="verduras">
+              <div class="produto-imagem">
+                <i class="fas fa-leaf"></i>
+              </div>
+              <div class="produto-info">
+                <h3>Espinafre Orgânico</h3>
+                <p class="produto-descricao">
+                  Espinafre fresco, rico em ferro e vitaminas
+                </p>
+                <div class="produto-preco">
+                  <span class="preco-atual">R$ 4,80</span>
+                </div>
+                <div class="produto-acoes">
+                  <div class="quantidade-controle">
+                    <button class="qtd-btn" onclick="diminuirQuantidade(this)">
+                      -
+                    </button>
+                    <span class="quantidade">1</span>
+                    <button class="qtd-btn" onclick="aumentarQuantidade(this)">
+                      +
+                    </button>
+                  </div>
+                  <button
+                    class="btn btn-add-cart"
+                    onclick="adicionarAoCarrinho(this)"
+                  >
+                    <i class="fas fa-plus"></i>
+                    Adicionar
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="produto-card" data-categoria="verduras">
+              <div class="produto-imagem">
+                <i class="fas fa-leaf"></i>
+              </div>
+              <div class="produto-info">
+                <h3>Rúcula Fresca</h3>
+                <p class="produto-descricao">
+                  Rúcula orgânica, perfeita para saladas gourmet
+                </p>
+                <div class="produto-preco">
+                  <span class="preco-atual">R$ 3,90</span>
+                </div>
+                <div class="produto-acoes">
+                  <div class="quantidade-controle">
+                    <button class="qtd-btn" onclick="diminuirQuantidade(this)">
+                      -
+                    </button>
+                    <span class="quantidade">1</span>
+                    <button class="qtd-btn" onclick="aumentarQuantidade(this)">
+                      +
+                    </button>
+                  </div>
+                  <button
+                    class="btn btn-add-cart"
+                    onclick="adicionarAoCarrinho(this)"
+                  >
+                    <i class="fas fa-plus"></i>
+                    Adicionar
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="produto-card" data-categoria="verduras">
+              <div class="produto-imagem">
+                <i class="fas fa-leaf"></i>
+              </div>
+              <div class="produto-info">
+                <h3>Couve Orgânica</h3>
+                <p class="produto-descricao">
+                  Couve fresca, ideal para sucos e refogados
+                </p>
+                <div class="produto-preco">
+                  <span class="preco-atual">R$ 2,50</span>
+                </div>
+                <div class="produto-acoes">
+                  <div class="quantidade-controle">
+                    <button class="qtd-btn" onclick="diminuirQuantidade(this)">
+                      -
+                    </button>
+                    <span class="quantidade">1</span>
+                    <button class="qtd-btn" onclick="aumentarQuantidade(this)">
+                      +
+                    </button>
+                  </div>
+                  <button
+                    class="btn btn-add-cart"
+                    onclick="adicionarAoCarrinho(this)"
+                  >
+                    <i class="fas fa-plus"></i>
+                    Adicionar
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Frutas -->
+            <div class="produto-card" data-categoria="frutas">
+              <div class="produto-imagem">
+                <i class="fas fa-apple-alt"></i>
+              </div>
+              <div class="produto-info">
+                <h3>Maçã Verde</h3>
+                <p class="produto-descricao">
+                  Maçãs verdes orgânicas, perfeitas para saladas
+                </p>
+                <div class="produto-preco">
+                  <span class="preco-atual">R$ 8,90</span>
+                  <span class="preco-antigo">R$ 12,50</span>
+                </div>
+                <div class="produto-acoes">
+                  <div class="quantidade-controle">
+                    <button class="qtd-btn" onclick="diminuirQuantidade(this)">
+                      -
+                    </button>
+                    <span class="quantidade">1</span>
+                    <button class="qtd-btn" onclick="aumentarQuantidade(this)">
+                      +
+                    </button>
+                  </div>
+                  <button
+                    class="btn btn-add-cart"
+                    onclick="adicionarAoCarrinho(this)"
+                  >
+                    <i class="fas fa-plus"></i>
+                    Adicionar
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="produto-card" data-categoria="frutas">
+              <div class="produto-badge">Oferta</div>
+              <div class="produto-imagem">
+                <i class="fas fa-apple-alt"></i>
+              </div>
+              <div class="produto-info">
+                <h3>Banana Orgânica</h3>
+                <p class="produto-descricao">
+                  Bananas orgânicas, doces e nutritivas
+                </p>
+                <div class="produto-preco">
+                  <span class="preco-atual">R$ 5,90</span>
+                  <span class="preco-antigo">R$ 7,80</span>
+                </div>
+                <div class="produto-acoes">
+                  <div class="quantidade-controle">
+                    <button class="qtd-btn" onclick="diminuirQuantidade(this)">
+                      -
+                    </button>
+                    <span class="quantidade">1</span>
+                    <button class="qtd-btn" onclick="aumentarQuantidade(this)">
+                      +
+                    </button>
+                  </div>
+                  <button
+                    class="btn btn-add-cart"
+                    onclick="adicionarAoCarrinho(this)"
+                  >
+                    <i class="fas fa-plus"></i>
+                    Adicionar
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="produto-card" data-categoria="frutas">
+              <div class="produto-imagem">
+                <i class="fas fa-apple-alt"></i>
+              </div>
+              <div class="produto-info">
+                <h3>Laranja Orgânica</h3>
+                <p class="produto-descricao">
+                  Laranjas doces e suculentas, ricas em vitamina C
+                </p>
+                <div class="produto-preco">
+                  <span class="preco-atual">R$ 6,50</span>
+                </div>
+                <div class="produto-acoes">
+                  <div class="quantidade-controle">
+                    <button class="qtd-btn" onclick="diminuirQuantidade(this)">
+                      -
+                    </button>
+                    <span class="quantidade">1</span>
+                    <button class="qtd-btn" onclick="aumentarQuantidade(this)">
+                      +
+                    </button>
+                  </div>
+                  <button
+                    class="btn btn-add-cart"
+                    onclick="adicionarAoCarrinho(this)"
+                  >
+                    <i class="fas fa-plus"></i>
+                    Adicionar
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="produto-card" data-categoria="frutas">
+              <div class="produto-imagem">
+                <i class="fas fa-apple-alt"></i>
+              </div>
+              <div class="produto-info">
+                <h3>Morango Orgânico</h3>
+                <p class="produto-descricao">
+                  Morangos frescos e doces, cultivados sem agrotóxicos
+                </p>
+                <div class="produto-preco">
+                  <span class="preco-atual">R$ 12,80</span>
+                </div>
+                <div class="produto-acoes">
+                  <div class="quantidade-controle">
+                    <button class="qtd-btn" onclick="diminuirQuantidade(this)">
+                      -
+                    </button>
+                    <span class="quantidade">1</span>
+                    <button class="qtd-btn" onclick="aumentarQuantidade(this)">
+                      +
+                    </button>
+                  </div>
+                  <button
+                    class="btn btn-add-cart"
+                    onclick="adicionarAoCarrinho(this)"
+                  >
+                    <i class="fas fa-plus"></i>
+                    Adicionar
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Ervas -->
+            <div class="produto-card" data-categoria="ervas">
+              <div class="produto-imagem">
+                <i class="fas fa-seedling"></i>
+              </div>
+              <div class="produto-info">
+                <h3>Manjericão Fresco</h3>
+                <p class="produto-descricao">
+                  Manjericão aromático, ideal para molhos
+                </p>
+                <div class="produto-preco">
+                  <span class="preco-atual">R$ 2,80</span>
+                </div>
+                <div class="produto-acoes">
+                  <div class="quantidade-controle">
+                    <button class="qtd-btn" onclick="diminuirQuantidade(this)">
+                      -
+                    </button>
+                    <span class="quantidade">1</span>
+                    <button class="qtd-btn" onclick="aumentarQuantidade(this)">
+                      +
+                    </button>
+                  </div>
+                  <button
+                    class="btn btn-add-cart"
+                    onclick="adicionarAoCarrinho(this)"
+                  >
+                    <i class="fas fa-plus"></i>
+                    Adicionar
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="produto-card" data-categoria="ervas">
+              <div class="produto-imagem">
+                <i class="fas fa-seedling"></i>
+              </div>
+              <div class="produto-info">
+                <h3>Salsa Orgânica</h3>
+                <p class="produto-descricao">
+                  Salsa fresca, perfeita para temperar pratos
+                </p>
+                <div class="produto-preco">
+                  <span class="preco-atual">R$ 2,20</span>
+                </div>
+                <div class="produto-acoes">
+                  <div class="quantidade-controle">
+                    <button class="qtd-btn" onclick="diminuirQuantidade(this)">
+                      -
+                    </button>
+                    <span class="quantidade">1</span>
+                    <button class="qtd-btn" onclick="aumentarQuantidade(this)">
+                      +
+                    </button>
+                  </div>
+                  <button
+                    class="btn btn-add-cart"
+                    onclick="adicionarAoCarrinho(this)"
+                  >
+                    <i class="fas fa-plus"></i>
+                    Adicionar
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="produto-card" data-categoria="ervas">
+              <div class="produto-imagem">
+                <i class="fas fa-seedling"></i>
+              </div>
+              <div class="produto-info">
+                <h3>Hortelã Fresca</h3>
+                <p class="produto-descricao">
+                  Hortelã orgânica, ideal para chás e drinks
+                </p>
+                <div class="produto-preco">
+                  <span class="preco-atual">R$ 3,50</span>
+                </div>
+                <div class="produto-acoes">
+                  <div class="quantidade-controle">
+                    <button class="qtd-btn" onclick="diminuirQuantidade(this)">
+                      -
+                    </button>
+                    <span class="quantidade">1</span>
+                    <button class="qtd-btn" onclick="aumentarQuantidade(this)">
+                      +
+                    </button>
+                  </div>
+                  <button
+                    class="btn btn-add-cart"
+                    onclick="adicionarAoCarrinho(this)"
+                  >
+                    <i class="fas fa-plus"></i>
+                    Adicionar
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="produto-card" data-categoria="ervas">
+              <div class="produto-imagem">
+                <i class="fas fa-seedling"></i>
+              </div>
+              <div class="produto-info">
+                <h3>Alecrim Orgânico</h3>
+                <p class="produto-descricao">
+                  Alecrim fresco, perfeito para carnes e molhos
+                </p>
+                <div class="produto-preco">
+                  <span class="preco-atual">R$ 3,80</span>
+                </div>
+                <div class="produto-acoes">
+                  <div class="quantidade-controle">
+                    <button class="qtd-btn" onclick="diminuirQuantidade(this)">
+                      -
+                    </button>
+                    <span class="quantidade">1</span>
+                    <button class="qtd-btn" onclick="aumentarQuantidade(this)">
+                      +
+                    </button>
+                  </div>
+                  <button
+                    class="btn btn-add-cart"
+                    onclick="adicionarAoCarrinho(this)"
+                  >
+                    <i class="fas fa-plus"></i>
+                    Adicionar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Paginação -->
+          <div class="paginacao">
+            <button class="pagina-btn" disabled>
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="pagina-btn active">1</button>
+            <button class="pagina-btn">2</button>
+            <button class="pagina-btn">3</button>
+            <button class="pagina-btn">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Newsletter -->
+      <section class="newsletter">
+        <div class="container">
+          <div class="newsletter-content">
+            <h2>Fique por dentro das novidades!</h2>
+            <p>Receba ofertas exclusivas e dicas de alimentação saudável</p>
+            <form class="newsletter-form">
+              <input type="email" placeholder="Seu melhor e-mail" required />
+              <button type="submit" class="btn btn-primary">
+                Inscrever-se
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <div class="footer-logo">
+              <i class="fas fa-leaf"></i>
+              <h3>Verdes do Seu Luiz</h3>
+            </div>
+            <p>
+              Produtos orgânicos frescos e naturais, cultivados com amor e
+              respeito ao meio ambiente.
+            </p>
+          </div>
+          <div class="footer-section">
+            <h4>Links Rápidos</h4>
+            <ul>
+              <li><a href="index.html">Início</a></li>
+              <li><a href="produtos.html">Produtos</a></li>
+              <li><a href="sobre.html">Sobre</a></li>
+              <li><a href="contato.html">Contato</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Contato</h4>
+            <p><i class="fas fa-envelope"></i> contato@verdesdoseuluiz.com</p>
+            <p><i class="fas fa-phone"></i> (XX) XXXX-XXXX</p>
+            <p><i class="fas fa-map-marker-alt"></i> São Paulo, SP</p>
+          </div>
+          <div class="footer-section">
+            <h4>Redes Sociais</h4>
+            <div class="social-links">
+              <a href="#" class="social-link"
+                ><i class="fab fa-facebook"></i
+              ></a>
+              <a href="#" class="social-link"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" class="social-link"
+                ><i class="fab fa-whatsapp"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2024 Verdes do Seu Luiz. Todos os direitos reservados.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Filtros de categoria
+      document.querySelectorAll(".filtro-btn").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          // Remove active de todos os botões
+          document
+            .querySelectorAll(".filtro-btn")
+            .forEach((b) => b.classList.remove("active"));
+          // Adiciona active ao botão clicado
+          this.classList.add("active");
+
+          const categoria = this.getAttribute("data-categoria");
+          filtrarProdutos(categoria);
+        });
+      });
+
+      function filtrarProdutos(categoria) {
+        const produtos = document.querySelectorAll(".produto-card");
+        let contador = 0;
+
+        produtos.forEach((produto) => {
+          if (
+            categoria === "todos" ||
+            produto.getAttribute("data-categoria") === categoria
+          ) {
+            produto.style.display = "block";
+            contador++;
+          } else {
+            produto.style.display = "none";
+          }
+        });
+
+        document.getElementById("quantidade-produtos").textContent = contador;
+      }
+
+      // Controles de quantidade
+      function diminuirQuantidade(btn) {
+        const quantidadeSpan = btn.parentNode.querySelector(".quantidade");
+        let quantidade = parseInt(quantidadeSpan.textContent);
+        if (quantidade > 1) {
+          quantidadeSpan.textContent = quantidade - 1;
+        }
+      }
+
+      function aumentarQuantidade(btn) {
+        const quantidadeSpan = btn.parentNode.querySelector(".quantidade");
+        let quantidade = parseInt(quantidadeSpan.textContent);
+        quantidadeSpan.textContent = quantidade + 1;
+      }
+
+      // Adicionar ao carrinho
+      function adicionarAoCarrinho(btn) {
+        const produtoCard = btn.closest(".produto-card");
+        const nome = produtoCard.querySelector("h3").textContent;
+        const quantidade = produtoCard.querySelector(".quantidade").textContent;
+        const preco = produtoCard.querySelector(".preco-atual").textContent;
+
+        // Simular adição ao carrinho
+        const cartCount = document.querySelector(".cart-count");
+        let count = parseInt(cartCount.textContent);
+        cartCount.textContent = count + parseInt(quantidade);
+
+        // Feedback visual
+        btn.innerHTML = '<i class="fas fa-check"></i> Adicionado';
+        btn.style.background = "var(--secondary-color)";
+
+        setTimeout(() => {
+          btn.innerHTML = '<i class="fas fa-plus"></i> Adicionar';
+          btn.style.background = "var(--accent-color)";
+        }, 2000);
+
+        // Reset quantidade
+        produtoCard.querySelector(".quantidade").textContent = "1";
+      }
+
+      // Busca
+      document
+        .getElementById("busca-produtos")
+        .addEventListener("input", function () {
+          const termo = this.value.toLowerCase();
+          const produtos = document.querySelectorAll(".produto-card");
+          let contador = 0;
+
+          produtos.forEach((produto) => {
+            const nome = produto.querySelector("h3").textContent.toLowerCase();
+            const descricao = produto
+              .querySelector(".produto-descricao")
+              .textContent.toLowerCase();
+
+            if (nome.includes(termo) || descricao.includes(termo)) {
+              produto.style.display = "block";
+              contador++;
+            } else {
+              produto.style.display = "none";
+            }
+          });
+
+          document.getElementById("quantidade-produtos").textContent = contador;
+        });
+    </script>
+  </body>
+</html>
