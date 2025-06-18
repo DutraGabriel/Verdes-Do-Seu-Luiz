@@ -10,7 +10,7 @@ Site completo para uma loja de produtos orgânicos com funcionalidades de carrin
 Verdes do Seu Luiz/
 ├── index.html              # Página inicial
 ├── produtos.html           # Catálogo de produtos
-├── sobre.html              # Página "Quem Somos"
+├── quem_somos.html          # Página "Quem Somos"
 ├── contato.html            # Página de contato
 ├── carrinho.html           # Carrinho de compras
 ├── login.html              # Página de login
@@ -132,7 +132,7 @@ Verdes do Seu Luiz/
 - Horário de funcionamento
 - Mapa placeholder
 
-### `sobre.html`
+### `quem_somos.html`
 - História da empresa
 - Missão e valores
 - Equipe
